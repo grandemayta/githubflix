@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+node_modules
+dist/.idea
+dist/*.jpg
+dist/*.png
+dist/*.gif
+dist/*.woff
+dist/*.woff2
+dist/*.eot
+dist/*.svg
+dist/*.ttf
+dist/*.js
+dist/*.css
+dist/*.json
