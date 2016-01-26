@@ -11,18 +11,18 @@ import React            from "react";
 import { Link }         from "react-router";
 
 
-class Home extends React.Component {
+class Detail extends React.Component {
 
     render() {
         return (
             <div>
-                <h1>Hello GFT!</h1>
-                <Link to="/detail">Detail</Link>
+                <h1>Detail page</h1>
+                <Link to="/">Home</Link>
             </div>
         );
     }
 
 }
 
-export default Home;
+export default Detail;
 

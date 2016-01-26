@@ -11,12 +11,19 @@ import React                    from "react";
 import { render }               from "react-dom";
 import { Router, Route }        from "react-router";
 import Home                     from "../features/home/home";
-
-var routes = (
-    <Router>
-        <Route path="/" component={Home}/>
-    </Router>
-);
+import Detail                   from "../features/detail/detail";
+import Css                      from "../css/common.css";
 
 
-render(routes, document.getElementById("start"));
+let Routes = [
+    {
+        path: "/",
+        component: Home
+    },
+    {
+        path: "detail",
+        component: Detail
+    }
+];
+
+render(<Router routes={Routes}/>, document.getElementById("start"));
