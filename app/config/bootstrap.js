@@ -7,23 +7,28 @@
 
 "use strict";
 
-import React                    from "react";
-import { render }               from "react-dom";
-import { Router, Route }        from "react-router";
-import Home                     from "../features/home/home";
-import Detail                   from "../features/detail/detail";
-import Css                      from "../css/common.css";
+import React                                    from "react";
+import { render }                               from "react-dom";
+import { Router, Route, browserHistory }        from "react-router";
+import Menu                                     from "../features/menu/menu";
+import Css                                      from "../css/common.css";
 
 
-let Routes = [
+const Routes = [
     {
-        path: "/",
-        component: Home
-    },
-    {
-        path: "detail",
-        component: Detail
+        component: 'div',
+        childRoutes: [{
+            path: "/",
+            component: Menu,
+            childRoutes: [
+                require("../features/home"),
+                require("../features/detail")
+            ]
+        }]
     }
 ];
 
-render(<Router routes={Routes}/>, document.getElementById("start"));
+render(
+    <Router history={browserHistory} routes={Routes}/>,
+    document.getElementById("start")
+);

@@ -8,7 +8,6 @@
 "use strict";
 
 import React            from "react";
-import { Link }         from "react-router";
 
 
 class Home extends React.Component {
@@ -17,12 +16,11 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>Hello GFT!</h1>
-                <Link to="/detail">Detail</Link>
             </div>
         );
     }
 
 }
 
-export default Home;
+module.exports = Home;
 
