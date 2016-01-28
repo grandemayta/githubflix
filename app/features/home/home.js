@@ -12,11 +12,16 @@ import React            from "react";
 
 class Home extends React.Component {
 
+    componentDidMount() {
+        console.log("Component did mount", this.props.params);
+    };
+
     render() {
+        var items = function (item) {
+            return <h1 key={item.id}>{item.login}</h1>
+        };
         return (
-            <div>
-                <h1>Hello GFT!</h1>
-            </div>
+            <div>{this.props.params.homeResponse.map(items)}</div>
         );
     }
 
