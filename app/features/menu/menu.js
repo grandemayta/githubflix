@@ -17,14 +17,11 @@ class Menu extends React.Component {
         return (
             <div>
                 <button>
-                    <Link to="/home">Home</Link>
+                    <Link to="/users">Users</Link>
                 </button>
                 <button>
                     <Link to="/detail">Detail</Link>
                 </button>
-                <div>
-                    {this.props.children}
-                </div>
             </div>
         );
     }
