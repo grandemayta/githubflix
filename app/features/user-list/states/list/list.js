@@ -11,24 +11,25 @@ import React            from "react";
 import { Link }         from "react-router";
 
 
-class Users extends React.Component {
+class List extends React.Component {
 
-    componentDidMount() {
-        //console.log("Component did mount", this);
+    constructor(props) {
+        super();
+        this.state = {
+            listResponse: props.params.listResponse
+        };
     };
 
     render() {
-        let { children } = this.props;
         var items = function (item) {
             return <h1 key={item.id}>{item.login}</h1>
         };
         return (
             <div>
-                {this.props.params.usersResponse.map(items)}
+                {this.state.listResponse.map(items)}
                 <button>
-                    <Link to="/users/user">Pagina user</Link>
+                    <Link to="/user-info/2">Pagina user</Link>
                 </button>
-                {children}
             </div>
 
         );
@@ -36,5 +37,5 @@ class Users extends React.Component {
 
 }
 
-module.exports = Users;
+module.exports = List;
 

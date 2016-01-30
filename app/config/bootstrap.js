@@ -9,7 +9,7 @@
 
 import React                                    from "react";
 import { render }                               from "react-dom";
-import { Router, Route, browserHistory, IndexRoute }        from "react-router";
+import { Router, Route, browserHistory }        from "react-router";
 import Menu                                     from "../features/menu/menu";
 import Css                                      from "../css/common.css";
 
@@ -19,9 +19,9 @@ const Routes = [
         childRoutes: [{
             path: "/",
             component: Menu,
+            indexRoute: require("../features/user-list/states/list"),
             childRoutes: [
-                require("../features/user-list/states/users"),
-                require("../features/detail")
+                require("../features/user-info/states/info")
             ]
         }]
     }

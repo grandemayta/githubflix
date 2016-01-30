@@ -17,11 +17,9 @@ class Menu extends React.Component {
         return (
             <div>
                 <button>
-                    <Link to="/users">Users</Link>
+                    <Link to="/">Users</Link>
                 </button>
-                <button>
-                    <Link to="/detail">Detail</Link>
-                </button>
+                {this.props.children}
             </div>
         );
     }

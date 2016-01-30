@@ -9,31 +9,28 @@ var request = require("superagent");
 
 
 let configUsers = {
-    path: 'users',
-    
+
     getComponent(location, callback) {
         require.ensure([], function (require) {
-            callback(null, require("./users"));
+            callback(null, require("./list"));
         })
     },
 
     onEnter(nextState, replaceState, callback) {
+
+        nextState.params.listResponse = [];
+
         request
             .get("https://api.github.com/users")
             .end(function (error, success) {
-                if (error) return false;
+                if (error) callback();
                 else {
-                    nextState.params.usersResponse = success.body;
+                    nextState.params.listResponse = success.body;
                     callback();
                 }
             });
-    },
-
-    getChildRoutes(location, callback) {
-        require.ensure([], function (require) {
-            callback(null, [require('../user/index')])
-        })
     }
+
 };
 
 module.exports = configUsers;
