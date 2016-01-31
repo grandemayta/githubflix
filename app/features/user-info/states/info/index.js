@@ -5,7 +5,7 @@
  *
  */
 
-var request = require("superagent");
+import request          from "superagent";
 
 
 let configInfo = {
@@ -23,15 +23,21 @@ let configInfo = {
 
         nextState.params.infoResponse = [];
 
-        request
-            .get("https://api.github.com/users/atmos")
-            .end(function (error, success) {
-                if (error) callback();
-                else {
-                    nextState.params.infoResponse = success.body;
-                    callback();
-                }
-            });
+        require.ensure([], function (require) {
+            var response = require("../../mocks/info.json");
+            nextState.params.infoResponse = response;
+            callback();
+        });
+
+        /*request
+         .get("https://api.github.com/users/atmos")
+         .end(function (error, success) {
+         if (error) callback();
+         else {
+         nextState.params.infoResponse = success.body;
+         callback();
+         }
+         });*/
     }
 
 };

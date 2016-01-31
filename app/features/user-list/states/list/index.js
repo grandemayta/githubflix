@@ -5,7 +5,7 @@
  *
  */
 
-var request = require("superagent");
+import request          from "superagent";
 
 
 let configUsers = {
@@ -20,15 +20,21 @@ let configUsers = {
 
         nextState.params.listResponse = [];
 
-        request
-            .get("https://api.github.com/users")
-            .end(function (error, success) {
-                if (error) callback();
-                else {
-                    nextState.params.listResponse = success.body;
-                    callback();
-                }
-            });
+        require.ensure([], function (require) {
+            var response = require("../../mocks/list.json");
+            nextState.params.listResponse = response;
+            callback();
+        });
+
+        /*request
+         .get("https://api.github.com/users")
+         .end(function (error, success) {
+         if (error) callback();
+         else {
+         nextState.params.listResponse = success.body;
+         callback();
+         }
+         });*/
     }
 
 };
