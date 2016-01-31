@@ -8,6 +8,7 @@
 "use strict";
 
 import React            from "react";
+import { Link }         from "react-router";
 
 
 class Repositories extends React.Component {
@@ -25,7 +26,12 @@ class Repositories extends React.Component {
 
     render() {
         return (
-            <h2>Repositories: {this.state.repositoriesResponse.length}</h2>
+            <div>
+                <h2>Repositories: {this.state.repositoriesResponse.length}</h2>
+                <button>
+                    <Link to="repository">Repository</Link>
+                </button>
+            </div>
         );
     }
 
