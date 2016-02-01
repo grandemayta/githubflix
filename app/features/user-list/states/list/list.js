@@ -22,7 +22,13 @@ class List extends React.Component {
 
     render() {
         var items = function (item) {
-            return <h1 key={item.id}>{item.login}</h1>
+            return (
+                <div key={item.id} className="card-container">
+                    <figure style={{backgroundImage: 'url(' + item.avatar_url + ')'}}></figure>
+                    <h3>{item.login}</h3>
+                    <i className="icon-ios-arrow-forward"></i>
+                </div>
+            );
         };
         return (
             <div>

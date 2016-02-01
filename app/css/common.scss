@@ -1,0 +1,76 @@
+/**
+ *
+ * @author: Gabriel Mayta
+ * @email : grandemayta@gmail.com
+ *
+ */
+@import "githubflix";
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border-radius: 0;
+  cursor: default;
+}
+
+$background-primary: #141414;
+$background-secondary: #000;
+$text-primary: #999;
+$text-secondary: #fff;
+$button-primary: #e50914;
+$background-transparent: rgba(0, 0, 0, 0.6);
+
+body {
+  background: $background-primary;
+}
+
+/* MENU CONTAINER */
+.menu-container {
+  display: none;
+}
+
+.card-container {
+  display: table;
+  width: 94%;
+  height: 100px;
+  margin: 3% 3% 0 3%;
+  background: $background-transparent;
+}
+
+.card-container figure {
+  display: table;
+  width: 80px;
+  height: 80px;
+  margin: 10px 0 0 10px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.card-container h3 {
+  display: table-cell;
+  width: 100%;
+  height: 100px;
+  vertical-align: middle;
+  padding-left: 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.card-container i {
+  display: table-cell;
+  height: 100px;
+  padding: 0 10px;
+  vertical-align: middle;
+  font-size: 18px;
+  color: $text-secondary;
+}
