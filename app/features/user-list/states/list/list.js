@@ -21,7 +21,6 @@ class List extends React.Component {
     };
 
     render() {
-
         var items = function (item) {
             return (
                 <Link to="/user-info/2" key={item.id} className="card-container no-a-style">
@@ -31,7 +30,6 @@ class List extends React.Component {
                 </Link>
             );
         };
-
         return <div>{this.state.listResponse.map(items)}</div>;
     }
 

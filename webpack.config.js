@@ -39,9 +39,15 @@ module.exports = {
         ]
     },
     resolve: {
-        modulesDirectories: ["node_modules", "app"]
+        modulesDirectories: ["node_modules", "app"],
+        alias: {
+            "swiper": "swiper/dist/js/swiper.js"
+        }
     },
     plugins: [
-        new ExtractTextPlugin("bundle.css")
+        new ExtractTextPlugin("bundle.css"),
+        new Webpack.ProvidePlugin({
+            Swiper: "swiper"
+        })
     ]
 };

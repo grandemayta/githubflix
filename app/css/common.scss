@@ -5,6 +5,7 @@
  *
  */
 @import "githubflix";
+@import "swiper";
 
 * {
   margin: 0;
@@ -36,6 +37,14 @@ body {
 
 .no-a-style {
   text-decoration: none;
+}
+
+h2 {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  color: $text-primary;
+  padding: 20px 0 10px 20px;
 }
 
 /************************ HEADER ************************/
@@ -116,4 +125,40 @@ section {
   vertical-align: middle;
   font-size: 18px;
   color: $text-secondary;
+}
+
+/*************** SLIDER CONTAINER **************/
+
+.slider-main-container {
+  padding-left: 20px;
+}
+
+.slider-container {
+  display: block;
+  width: 138px;
+  height: 78px;
+  text-align: center;
+  background: $background-transparent;
+  overflow: hidden;
+}
+
+.slider-container .repo-name {
+  display: block;
+  width: 100%;
+  height: 58px;
+  padding: 10px;
+  font-size: 14px;
+  color: $text-secondary;
+  text-align: left;
+  word-break: break-all;
+}
+
+.slider-container .repo-language {
+  display: block;
+  width: 100%;
+  padding-right: 10px;
+  font-size: 12px;
+  text-align: right;
+  color: $text-logo;
+  text-transform: lowercase;
 }
