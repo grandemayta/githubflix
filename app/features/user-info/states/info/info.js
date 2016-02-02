@@ -7,13 +7,13 @@
 
 "use strict";
 
-import React            from "react";
+import React                   from "react";
 
 
 class Info extends React.Component {
 
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             infoResponse: props.params.infoResponse
         };

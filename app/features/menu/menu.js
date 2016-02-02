@@ -7,8 +7,8 @@
 
 "use strict";
 
-import React            from "react";
-import { Link }         from "react-router";
+import React                     from "react";
+import { Link }                  from "react-router";
 
 
 class Menu extends React.Component {
@@ -16,12 +16,13 @@ class Menu extends React.Component {
     render() {
         return (
             <div>
-                <div className="menu-container">
-                    <button>
-                        <Link to="/">Users</Link>
-                    </button>
-                </div>
-                {this.props.children}
+                <header>
+                    <i className="icon-android-menu"></i>
+                    <Link to="/" className="no-a-style">Githubflix</Link>
+                </header>
+                <section>
+                    {this.props.children}
+                </section>
             </div>
         );
     }
