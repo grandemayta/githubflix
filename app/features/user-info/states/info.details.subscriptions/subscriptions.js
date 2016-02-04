@@ -10,17 +10,17 @@
 import React                 from "react";
 
 
-class Followers extends React.Component {
+class Subscriptions extends React.Component {
 
     constructor(props) {
         super();
         this.state = {
-            followersResponse: props.params.followersResponse
+            subscriptionsResponse: props.params.subscriptionsResponse
         };
     };
 
     componentDidMount() {
-        var swiper = new Swiper("#swiper-followers", {
+        var swiper = new Swiper("#swiper-subscriptions", {
             slidesPerView: "auto",
             spaceBetween: 2
         });
@@ -36,18 +36,17 @@ class Followers extends React.Component {
 
         return (
             <div>
-                <h2>Followers</h2>
-                <div id="swiper-followers" className="swiper-container slider-main-container">
+                <h2>Subscriptions</h2>
+                <div id="swiper-subscriptions" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
-                        {this.state.followersResponse.map(items)}
+                        {this.state.subscriptionsResponse.map(items)}
                     </div>
                 </div>
             </div>
         );
-        
     }
 
 }
 
-module.exports = Followers;
+module.exports = Subscriptions;
 

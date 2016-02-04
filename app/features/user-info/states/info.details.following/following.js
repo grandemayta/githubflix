@@ -27,20 +27,24 @@ class Following extends React.Component {
     };
 
     render() {
+
+        let items = function (item) {
+            return (
+                <div key={item.id} className="swiper-slide slider-container"></div>
+            );
+        };
+
         return (
             <div>
                 <h2>Following</h2>
                 <div id="swiper-following" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
-                        <div className="swiper-slide slider-container">Slide 1</div>
-                        <div className="swiper-slide slider-container">Slide 2</div>
-                        <div className="swiper-slide slider-container">Slide 3</div>
-                        <div className="swiper-slide slider-container">Slide 4</div>
-                        <div className="swiper-slide slider-container">Slide 5</div>
+                        {this.state.followingResponse.map(items)}
                     </div>
                 </div>
             </div>
         );
+
     }
 
 }

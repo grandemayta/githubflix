@@ -30,7 +30,7 @@ class Repositories extends React.Component {
     render() {
         let items = function (item) {
             return (
-                <div className="swiper-slide slider-container">
+                <div key={item.id} className="swiper-slide slider-container">
                     <div className="repo-name">{item.name}</div>
                     <div className="repo-language">{item.language}</div>
                 </div>
