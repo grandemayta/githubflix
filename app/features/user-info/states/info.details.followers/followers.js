@@ -22,7 +22,7 @@ class Followers extends React.Component {
     componentDidMount() {
         var swiper = new Swiper("#swiper-followers", {
             slidesPerView: "auto",
-            spaceBetween: 2
+            spaceBetween: 5
         });
     };
 
@@ -30,7 +30,10 @@ class Followers extends React.Component {
 
         let items = function (item) {
             return (
-                <div key={item.id} className="swiper-slide slider-container"></div>
+                <div key={item.id} className="swiper-slide slider-container">
+                    <div style={{backgroundImage: 'url(' + item.avatar_url + ')'}} className="image-secondary-center"></div>
+                    <div className="text-botton-center">{item.login}</div>
+                </div>
             );
         };
 
@@ -44,7 +47,7 @@ class Followers extends React.Component {
                 </div>
             </div>
         );
-        
+
     }
 
 }

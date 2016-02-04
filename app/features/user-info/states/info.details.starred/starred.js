@@ -10,17 +10,17 @@
 import React                 from "react";
 
 
-class Following extends React.Component {
+class Starred extends React.Component {
 
     constructor(props) {
         super();
         this.state = {
-            followingResponse: props.params.followingResponse
+            starredResponse: props.params.starredResponse
         };
     };
 
     componentDidMount() {
-        var swiper = new Swiper("#swiper-following", {
+        var swiper = new Swiper("#swiper-starred", {
             slidesPerView: "auto",
             spaceBetween: 5
         });
@@ -31,26 +31,25 @@ class Following extends React.Component {
         let items = function (item) {
             return (
                 <div key={item.id} className="swiper-slide slider-container">
-                    <div style={{backgroundImage: 'url(' + item.avatar_url + ')'}} className="image-secondary-center"></div>
-                    <div className="text-botton-center">{item.login}</div>
+                    <div className="text-primary-left">{item.name}</div>
+                    <div className="text-bottom-right">{item.language}</div>
                 </div>
             );
         };
 
         return (
             <div>
-                <h2>Following</h2>
-                <div id="swiper-following" className="swiper-container slider-main-container">
+                <h2>Starred</h2>
+                <div id="swiper-starred" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
-                        {this.state.followingResponse.map(items)}
+                        {this.state.starredResponse.map(items)}
                     </div>
                 </div>
             </div>
         );
-
     }
 
 }
 
-module.exports = Following;
+module.exports = Starred;
 

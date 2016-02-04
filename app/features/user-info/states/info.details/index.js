@@ -16,7 +16,7 @@ let configDetails = {
                 repositories: require("../info.details.repositories/repositories"),
                 followers: require("../info.details.followers/followers"),
                 following: require("../info.details.following/following"),
-                subscriptions: require("../info.details.subscriptions/subscriptions")
+                starred: require("../info.details.starred/starred")
             });
         })
     },
@@ -26,43 +26,43 @@ let configDetails = {
         nextState.params.repositoriesResponse = [];
         nextState.params.followersResponse = [];
         nextState.params.followingResponse = [];
-        nextState.params.subscriptionsResponse = [];
+        nextState.params.starredResponse = [];
 
-        require.ensure([], function (require) {
-            var repositoriesResponse = require("../../mocks/repositories.json");
-            var followersResponse = require("../../mocks/followers.json");
-            var followingResponse = require("../../mocks/following.json");
-            var subscriptionsResponse = require("../../mocks/subscriptions.json");
-            nextState.params.repositoriesResponse = repositoriesResponse;
-            nextState.params.followersResponse = followersResponse;
-            nextState.params.followingResponse = followingResponse;
-            nextState.params.subscriptionsResponse = subscriptionsResponse;
-            callback();
-        });
-
-        /*request
-         .get("https://api.github.com/users/atmos/repos")
-         .end(function (error, success) {
-         if (error) {
-         request
-         .get("https://api.github.com/users/atmos/followers")
-         .end(function (error, success) {
-         if (error) callback();
-         nextState.params.followersResponse = success.body;
+        /*require.ensure([], function (require) {
+         var repositoriesResponse = require("../../mocks/repositories.json");
+         var followersResponse = require("../../mocks/followers.json");
+         var followingResponse = require("../../mocks/following.json");
+         var subscriptionsResponse = require("../../mocks/subscriptions.json");
+         nextState.params.repositoriesResponse = repositoriesResponse;
+         nextState.params.followersResponse = followersResponse;
+         nextState.params.followingResponse = followingResponse;
+         nextState.params.subscriptionsResponse = subscriptionsResponse;
          callback();
-         });
-         }
-         else {
-         nextState.params.repositoriesResponse = success.body;
-         request
-         .get("https://api.github.com/users/atmos/followers")
-         .end(function (error, success) {
-         nextState.params.followersResponse = success.body;
-         callback();
-         });
-
-         }
          });*/
+
+        request
+            .get("https://api.github.com/users/gabrielmayta/repos")
+            .end(function (error, success) {
+                nextState.params.repositoriesResponse = success.body;
+                request
+                    .get("https://api.github.com/users/gabrielmayta/followers")
+                    .end(function (error, success) {
+                        nextState.params.followersResponse = success.body;
+                        request
+                            .get("https://api.github.com/users/gabrielmayta/following")
+                            .end(function (error, success) {
+                                nextState.params.followingResponse = success.body;
+                                request
+                                    .get("https://api.github.com/users/gabrielmayta/starred")
+                                    .end(function (error, success) {
+                                        nextState.params.starredResponse = success.body;
+                                        callback();
+                                    });
+                            });
+                    });
+
+
+            });
     }
 
 };

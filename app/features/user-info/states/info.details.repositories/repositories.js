@@ -31,8 +31,8 @@ class Repositories extends React.Component {
         let items = function (item) {
             return (
                 <div key={item.id} className="swiper-slide slider-container">
-                    <div className="repo-name">{item.name}</div>
-                    <div className="repo-language">{item.language}</div>
+                    <div className="text-primary-left">{item.name}</div>
+                    <div className="text-bottom-right">{item.language}</div>
                 </div>
             );
         };
