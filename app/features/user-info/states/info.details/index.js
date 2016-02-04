@@ -14,7 +14,8 @@ let configDetails = {
         require.ensure([], function (require) {
             callback(null, {
                 repositories: require("../info.details.repositories/repositories"),
-                followers: require("../info.details.followers/followers")
+                followers: require("../info.details.followers/followers"),
+                following: require("../info.details.following/followers")
             });
         })
     },
@@ -23,12 +24,15 @@ let configDetails = {
 
         nextState.params.repositoriesResponse = [];
         nextState.params.followersResponse = [];
+        nextState.params.followingResponse = [];
 
         require.ensure([], function (require) {
             var repositoriesResponse = require("../../mocks/repositories.json");
             var followersResponse = require("../../mocks/followers.json");
+            var followingResponse = require("../../mocks/following.json");
             nextState.params.repositoriesResponse = repositoriesResponse;
             nextState.params.followersResponse = followersResponse;
+            nextState.params.followingResponse = followingResponse;
             callback();
         });
 

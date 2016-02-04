@@ -24,6 +24,7 @@ class Info extends React.Component {
             <div>
                 {this.props.repositories}
                 {this.props.followers}
+                {this.props.following}
             </div>
         );
     }
