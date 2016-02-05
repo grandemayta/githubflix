@@ -10,7 +10,7 @@ import request          from "superagent";
 
 let configRepository = {
 
-    path: "repository",
+    path: "user/:id/repository",
 
     getComponent(location, callback) {
         require.ensure([], function (require) {

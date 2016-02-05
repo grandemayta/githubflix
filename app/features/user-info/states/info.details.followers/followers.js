@@ -7,7 +7,8 @@
 
 "use strict";
 
-import React                 from "react";
+import React                    from "react";
+import { Link }                 from "react-router";
 
 
 class Followers extends React.Component {
@@ -30,10 +31,10 @@ class Followers extends React.Component {
 
         let items = function (item) {
             return (
-                <div key={item.id} className="swiper-slide slider-container">
+                <Link to={`/user/${item.login}`} key={item.id} className="swiper-slide slider-container">
                     <div style={{backgroundImage: 'url(' + item.avatar_url + ')'}} className="image-secondary-center"></div>
                     <div className="text-botton-center">{item.login}</div>
-                </div>
+                </Link>
             );
         };
 

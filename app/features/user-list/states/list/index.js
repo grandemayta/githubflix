@@ -21,8 +21,7 @@ let configUsers = {
         nextState.params.listResponse = [];
 
         require.ensure([], function (require) {
-            var response = require("../../mocks/list.json");
-            nextState.params.listResponse = response;
+            nextState.params.listResponse = require("../../mocks/list.json");
             callback();
         });
 

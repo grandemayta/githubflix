@@ -28,41 +28,35 @@ let configDetails = {
         nextState.params.followingResponse = [];
         nextState.params.starredResponse = [];
 
-        /*require.ensure([], function (require) {
-         var repositoriesResponse = require("../../mocks/repositories.json");
-         var followersResponse = require("../../mocks/followers.json");
-         var followingResponse = require("../../mocks/following.json");
-         var subscriptionsResponse = require("../../mocks/subscriptions.json");
-         nextState.params.repositoriesResponse = repositoriesResponse;
-         nextState.params.followersResponse = followersResponse;
-         nextState.params.followingResponse = followingResponse;
-         nextState.params.subscriptionsResponse = subscriptionsResponse;
+        require.ensure([], function (require) {
+            nextState.params.repositoriesResponse = require("../../mocks/repositories.json");
+            nextState.params.followersResponse = require("../../mocks/followers.json");
+            nextState.params.followingResponse = require("../../mocks/following.json");
+            nextState.params.starredResponse = require("../../mocks/starred.json");
+            callback();
+        });
+
+        /*request
+         .get("https://api.github.com/users/" + nextState.params.id + "/repos")
+         .end(function (error, success) {
+         nextState.params.repositoriesResponse = success.body;
+         request
+         .get("https://api.github.com/users/" + nextState.params.id + "/followers")
+         .end(function (error, success) {
+         nextState.params.followersResponse = success.body;
+         request
+         .get("https://api.github.com/users/" + nextState.params.id + "/following")
+         .end(function (error, success) {
+         nextState.params.followingResponse = success.body;
+         request
+         .get("https://api.github.com/users/" + nextState.params.id + "/starred")
+         .end(function (error, success) {
+         nextState.params.starredResponse = success.body;
          callback();
+         });
+         });
+         });
          });*/
-
-        request
-            .get("https://api.github.com/users/gabrielmayta/repos")
-            .end(function (error, success) {
-                nextState.params.repositoriesResponse = success.body;
-                request
-                    .get("https://api.github.com/users/gabrielmayta/followers")
-                    .end(function (error, success) {
-                        nextState.params.followersResponse = success.body;
-                        request
-                            .get("https://api.github.com/users/gabrielmayta/following")
-                            .end(function (error, success) {
-                                nextState.params.followingResponse = success.body;
-                                request
-                                    .get("https://api.github.com/users/gabrielmayta/starred")
-                                    .end(function (error, success) {
-                                        nextState.params.starredResponse = success.body;
-                                        callback();
-                                    });
-                            });
-                    });
-
-
-            });
     }
 
 };

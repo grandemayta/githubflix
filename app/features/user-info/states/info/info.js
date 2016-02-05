@@ -17,7 +17,6 @@ class Info extends React.Component {
         this.state = {
             infoResponse: props.params.infoResponse
         };
-        console.log(this.state.infoResponse);
     };
 
     render() {

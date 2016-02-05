@@ -10,7 +10,7 @@ import request          from "superagent";
 
 let configInfo = {
 
-    path: 'user-info/:id',
+    path: 'user/:id',
     indexRoute: require('../info.details'),
 
     getComponent(location, callback) {
@@ -23,21 +23,20 @@ let configInfo = {
 
         nextState.params.infoResponse = [];
 
-        /*require.ensure([], function (require) {
-         var response = require("../../mocks/info.json");
-         nextState.params.infoResponse = response;
-         callback();
-         });*/
+        require.ensure([], function (require) {
+            nextState.params.infoResponse = require("../../mocks/info.json");
+            callback();
+        });
 
-        request
-            .get("https://api.github.com/users/gabrielmayta")
-            .end(function (error, success) {
-                if (error) callback();
-                else {
-                    nextState.params.infoResponse = success.body;
-                    callback();
-                }
-            });
+        /*request
+         .get("https://api.github.com/users/" + nextState.params.id)
+         .end(function (error, success) {
+         if (error) callback();
+         else {
+         nextState.params.infoResponse = success.body;
+         callback();
+         }
+         });*/
     }
 
 };

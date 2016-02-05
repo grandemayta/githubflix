@@ -7,7 +7,8 @@
 
 "use strict";
 
-import React                 from "react";
+import React                    from "react";
+import { Link }                 from "react-router";
 
 
 class Starred extends React.Component {
@@ -30,10 +31,10 @@ class Starred extends React.Component {
 
         let items = function (item) {
             return (
-                <div key={item.id} className="swiper-slide slider-container">
+                <Link to={`user/${item.owner.login}/repository`} key={item.id} className="swiper-slide slider-container">
                     <div className="text-primary-left">{item.name}</div>
                     <div className="text-bottom-right">{item.language}</div>
-                </div>
+                </Link>
             );
         };
 

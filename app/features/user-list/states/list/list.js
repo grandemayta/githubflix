@@ -23,7 +23,7 @@ class List extends React.Component {
     render() {
         var items = function (item) {
             return (
-                <Link to="/user-info/2" key={item.id} className="card-container no-a-style">
+                <Link to={`/user/${item.login}`} key={item.id} className="card-container">
                     <figure style={{backgroundImage: 'url(' + item.avatar_url + ')'}}></figure>
                     <h3>{item.login}</h3>
                     <i className="icon-ios-arrow-forward"></i>
