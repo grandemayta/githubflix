@@ -11,11 +11,19 @@ import request          from "superagent";
 let configInfo = {
 
     path: 'user/:id',
-    indexRoute: require('../info.details'),
+    /*indexRoute: require('../info.details'),*/
 
     getComponent(location, callback) {
         require.ensure([], function (require) {
             callback(null, require("./info"));
+        });
+    },
+
+    getChildRoutes(location, callback){
+        require.ensure([], function (require) {
+            callback(null, [
+                require("../info.details")
+            ]);
         });
     },
 

@@ -6,9 +6,12 @@
  */
 
 import request          from "superagent";
+import async            from "async";
 
 
 let configDetails = {
+
+    path: "details",
 
     getComponents(location, callback) {
         require.ensure([], function (require) {
@@ -28,35 +31,75 @@ let configDetails = {
         nextState.params.followingResponse = [];
         nextState.params.starredResponse = [];
 
-        require.ensure([], function (require) {
-            nextState.params.repositoriesResponse = require("../../mocks/repositories.json");
-            nextState.params.followersResponse = require("../../mocks/followers.json");
-            nextState.params.followingResponse = require("../../mocks/following.json");
-            nextState.params.starredResponse = require("../../mocks/starred.json");
+        console.log(nextState);
+
+
+        async.parallel({
+            repositoriesResponse: function (callback) {
+                request
+                    .get("https://api.github.com/users/" + nextState.params.id + "/repos")
+                    .end(function (error, success) {
+                        if (error) callback(null, []);
+                        else callback(null, success.body);
+                    });
+            },
+            followersResponse: function (callback) {
+                request
+                    .get("https://api.github.com/users/" + nextState.params.id + "/followers")
+                    .end(function (error, success) {
+                        if (error) callback(null, []);
+                        else callback(null, success.body);
+                    });
+            },
+            followingResponse: function (callback) {
+                request
+                    .get("https://api.github.com/users/" + nextState.params.id + "/following")
+                    .end(function (error, success) {
+                        if (error) callback(null, []);
+                        else callback(null, success.body);
+                    });
+            },
+            starredResponse: function (callback) {
+                request
+                    .get("https://api.github.com/users/" + nextState.params.id + "/starred")
+                    .end(function (error, success) {
+                        if (error) callback(null, []);
+                        else callback(null, success.body);
+                    });
+            }
+        }, function (error, response) {
+            nextState.params.repositoriesResponse = response.repositoriesResponse;
+            nextState.params.followersResponse = response.followersResponse;
+            nextState.params.followingResponse = response.followingResponse;
+            nextState.params.starredResponse = response.starredResponse;
             callback();
         });
 
-        /*request
-         .get("https://api.github.com/users/" + nextState.params.id + "/repos")
-         .end(function (error, success) {
-         nextState.params.repositoriesResponse = success.body;
-         request
-         .get("https://api.github.com/users/" + nextState.params.id + "/followers")
-         .end(function (error, success) {
-         nextState.params.followersResponse = success.body;
-         request
-         .get("https://api.github.com/users/" + nextState.params.id + "/following")
-         .end(function (error, success) {
-         nextState.params.followingResponse = success.body;
-         request
-         .get("https://api.github.com/users/" + nextState.params.id + "/starred")
-         .end(function (error, success) {
-         nextState.params.starredResponse = success.body;
+        /*require.ensure([], function (require) {
+
+         async.parallel({
+         repositoriesResponse: function (callback) {
+         callback(null, require("../../mocks/repositories.json"));
+         },
+         followersResponse: function (callback) {
+         callback(null, require("../../mocks/followers.json"));
+         },
+         followingResponse: function (callback) {
+         callback(null, require("../../mocks/following.json"));
+         },
+         starredResponse: function (callback) {
+         callback(null, require("../../mocks/starred.json"));
+         }
+         }, function (error, response) {
+         nextState.params.repositoriesResponse = response.repositoriesResponse;
+         nextState.params.followersResponse = response.followersResponse;
+         nextState.params.followingResponse = response.followingResponse;
+         nextState.params.starredResponse = response.starredResponse;
          callback();
          });
-         });
-         });
+
          });*/
+
     }
 
 };

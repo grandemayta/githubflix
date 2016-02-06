@@ -7,8 +7,7 @@
 
 "use strict";
 
-import React                   from "react";
-
+import React                    from "react";
 
 class Info extends React.Component {
 
@@ -19,6 +18,10 @@ class Info extends React.Component {
         };
     };
 
+    componentDidMount() {
+        this.props.history.push('user/defunkt/details');
+    };
+
     render() {
         return (
             <div>
@@ -26,6 +29,10 @@ class Info extends React.Component {
                      className="image-primary-center">
                 </div>
                 <h1>{this.state.infoResponse.name}</h1>
+
+                <br/>
+                <br/>
+
                 {this.props.repositories}
                 {this.props.followers}
                 {this.props.following}
