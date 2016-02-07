@@ -10,9 +10,9 @@
 import Reflux               from "reflux";
 
 
-let actions = Reflux.createActions(
+let Actions = Reflux.createActions(
     ["LOAD_INITIAL_DATA"]
 );
 
 
-export default actions;
+export default Actions;
