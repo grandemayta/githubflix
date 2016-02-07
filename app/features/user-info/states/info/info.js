@@ -5,34 +5,19 @@
  *
  */
 
+
+
+
 "use strict";
 
 import React                    from "react";
 
 class Info extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            infoResponse: props.params.infoResponse
-        };
-    };
-
-    componentDidMount() {
-        this.props.history.push('user/defunkt/details');
-    };
-
     render() {
         return (
             <div>
-                <div style={{backgroundImage: 'url(' + this.state.infoResponse.avatar_url + ')'}}
-                     className="image-primary-center">
-                </div>
-                <h1>{this.state.infoResponse.name}</h1>
-
-                <br/>
-                <br/>
-
+                {this.props.details}
                 {this.props.repositories}
                 {this.props.followers}
                 {this.props.following}
@@ -44,4 +29,5 @@ class Info extends React.Component {
 }
 
 module.exports = Info;
+
 
