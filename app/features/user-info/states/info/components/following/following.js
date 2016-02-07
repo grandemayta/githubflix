@@ -7,14 +7,14 @@
 
 "use strict";
 
-import React                            from "react";
-import Reflux                           from "reflux";
-import { Link }                         from "react-router";
-import { Spinner }                      from "../../../../components";
-import { Actions, Store }               from "./config";
+import React                              from "react";
+import Reflux                             from "reflux";
+import { Link }                           from "react-router";
+import { Spinner }                        from "../../components";
+import { Actions, Store }                 from "./config";
 
 
-let Followers = React.createClass({
+let Following = React.createClass({
 
     mixins: [Reflux.connect(Store)],
 
@@ -23,8 +23,8 @@ let Followers = React.createClass({
     },
 
     componentDidUpdate() {
-        if (this.state.followersResponse.length > 1) {
-            var swiper = new Swiper("#swiper-followers", {
+        if (this.state.followingResponse.length > 0) {
+            var swiper = new Swiper("#swiper-following", {
                 slidesPerView: "auto",
                 spaceBetween: 5
             });
@@ -44,11 +44,10 @@ let Followers = React.createClass({
 
         return (
             <div>
-                <h2>Followers</h2>
-                <Spinner status={this.state.spinnerStatus}/>
-                <div id="swiper-followers" className="swiper-container slider-main-container">
+                <h2>Following</h2>
+                <div id="swiper-following" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
-                        {this.state.followersResponse.map(items)}
+                        {this.state.followingResponse.map(items)}
                     </div>
                 </div>
             </div>
@@ -58,5 +57,5 @@ let Followers = React.createClass({
 
 });
 
-module.exports = Followers;
+module.exports = Following;
 

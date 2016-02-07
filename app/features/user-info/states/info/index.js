@@ -9,7 +9,7 @@
 let configInfo = {
 
     path: 'user/:id',
-    indexRoute: require("./abstract"),
+    indexRoute: require("./components"),
 
     getComponent(location, callback) {
         require.ensure([], function (require) {

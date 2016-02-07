@@ -8,13 +8,13 @@
 "use strict";
 
 import Reflux                   from "reflux";
-import request                  from "superagent";
+import Http                     from "superagent";
 import Actions                  from "./details-actions";
 
 
 let Store = Reflux.createStore({
 
-    getInitialState(){
+    getInitialState() {
         return {
             spinnerStatus: true,
             detailsResponse: []
@@ -28,7 +28,7 @@ let Store = Reflux.createStore({
     onLoadInitialData() {
         var self = this;
 
-        request
+        Http
             .get("https://api.github.com/users/gabrielmayta")
             .end(function (error, success) {
                 if (error) self.trigger({spinnerStatus: false});
@@ -37,6 +37,5 @@ let Store = Reflux.createStore({
     }
 
 });
-
 
 export default Store;

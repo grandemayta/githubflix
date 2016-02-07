@@ -7,18 +7,19 @@
 
 "use strict";
 
-import React                    from "react";
-import { Link }                 from "react-router";
+import React                                 from "react";
+import { Link }                              from "react-router";
+import Reflux                                from "reflux";
+import { Actions, Store }                    from "./config";
 
 
-class List extends React.Component {
+let List = React.createClass({
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            listResponse: props.params.listResponse
-        };
-    };
+    mixins: [Reflux.connect(Store)],
+
+    componentDidMount() {
+        Actions.LOAD_INITIAL_DATA();
+    },
 
     render() {
         var self = this;
@@ -34,7 +35,6 @@ class List extends React.Component {
         return <div>{this.state.listResponse.map(items)}</div>;
     }
 
-}
+});
 
 module.exports = List;
-

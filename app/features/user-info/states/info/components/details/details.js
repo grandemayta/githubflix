@@ -7,10 +7,10 @@
 
 "use strict";
 
-import React                              from "react";
-import Reflux                             from "reflux";
-import { Spinner }                        from "../../../../components";
-import { Actions, Store }                 from "./config";
+import React                                 from "react";
+import Reflux                                from "reflux";
+import { Spinner }                           from "../../components";
+import { Actions, Store }                    from "./config";
 
 
 let Details = React.createClass({
@@ -24,7 +24,6 @@ let Details = React.createClass({
     render() {
         return (
             <div>
-                <Spinner status={this.state.spinnerStatus}/>
                 <div style={{backgroundImage: 'url(' + this.state.detailsResponse.avatar_url + ')'}}
                      className="image-primary-center">
                 </div>
@@ -36,4 +35,3 @@ let Details = React.createClass({
 });
 
 module.exports = Details;
-
