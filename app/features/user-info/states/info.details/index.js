@@ -24,7 +24,7 @@ let configDetails = {
         })
     },
 
-    onEnter(nextState, replaceState, callback) {
+    onEnter(nextState, replaceState) {
 
         nextState.params.repositoriesResponse = [];
         nextState.params.followersResponse = [];
@@ -33,8 +33,7 @@ let configDetails = {
 
         console.log(nextState);
 
-
-        async.parallel({
+        /*async.parallel({
             repositoriesResponse: function (callback) {
                 request
                     .get("https://api.github.com/users/" + nextState.params.id + "/repos")
@@ -73,7 +72,7 @@ let configDetails = {
             nextState.params.followingResponse = response.followingResponse;
             nextState.params.starredResponse = response.starredResponse;
             callback();
-        });
+        });*/
 
         /*require.ensure([], function (require) {
 

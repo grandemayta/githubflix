@@ -7,25 +7,29 @@
 
 "use strict";
 
-import React                    from "react";
-import { Link }                 from "react-router";
+import React                            from "react";
+import Reflux                           from "reflux";
+import { Link }                         from "react-router";
+import { Spinner }                      from "../../../../components";
+import { Actions, Store }               from "./config";
 
 
-class Followers extends React.Component {
+let Followers = React.createClass({
 
-    constructor(props) {
-        super();
-        this.state = {
-            followersResponse: props.params.followersResponse
-        };
-    };
+    mixins: [Reflux.connect(Store)],
 
     componentDidMount() {
-        var swiper = new Swiper("#swiper-followers", {
-            slidesPerView: "auto",
-            spaceBetween: 5
-        });
-    };
+        Actions.LOAD_INITIAL_DATA();
+    },
+
+    componentDidUpdate() {
+        if (this.state.followersResponse.length > 1) {
+            var swiper = new Swiper("#swiper-followers", {
+                slidesPerView: "auto",
+                spaceBetween: 5
+            });
+        }
+    },
 
     render() {
 
@@ -41,6 +45,7 @@ class Followers extends React.Component {
         return (
             <div>
                 <h2>Followers</h2>
+                <Spinner status={this.state.spinnerStatus}/>
                 <div id="swiper-followers" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
                         {this.state.followersResponse.map(items)}
@@ -51,7 +56,7 @@ class Followers extends React.Component {
 
     }
 
-}
+});
 
 module.exports = Followers;
 

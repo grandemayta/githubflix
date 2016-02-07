@@ -7,25 +7,29 @@
 
 "use strict";
 
-import React                    from "react";
-import { Link }                 from "react-router";
+import React                              from "react";
+import Reflux                             from "reflux";
+import { Link }                           from "react-router";
+import { Spinner }                        from "../../../../components";
+import { Actions, Store }                 from "./config";
 
 
-class Repositories extends React.Component {
+let Repositories = React.createClass({
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            repositoriesResponse: props.params.repositoriesResponse
-        };
-    }
+    mixins: [Reflux.connect(Store)],
 
     componentDidMount() {
-        var swiper = new Swiper('#swiper-repositories', {
-            slidesPerView: 'auto',
-            spaceBetween: 5
-        });
-    };
+        Actions.LOAD_INITIAL_DATA();
+    },
+
+    componentDidUpdate(){
+        if (this.state.repositoriesResponse.length > 1) {
+            var swiper = new Swiper('#swiper-repositories', {
+                slidesPerView: 'auto',
+                spaceBetween: 5
+            });
+        }
+    },
 
     render() {
         let items = function (item) {
@@ -39,6 +43,7 @@ class Repositories extends React.Component {
         return (
             <div>
                 <h2>Repositories</h2>
+                <Spinner status={this.state.spinnerStatus}/>
                 <div id="swiper-repositories" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
                         {this.state.repositoriesResponse.map(items)}
@@ -48,7 +53,6 @@ class Repositories extends React.Component {
         );
     }
 
-}
+});
 
 module.exports = Repositories;
-
