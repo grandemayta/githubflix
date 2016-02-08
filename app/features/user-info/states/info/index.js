@@ -6,7 +6,7 @@
  */
 
 
-let configInfo = {
+module.exports = {
 
     path: 'user/:id',
     indexRoute: require("./components"),
@@ -18,5 +18,3 @@ let configInfo = {
     }
 
 };
-
-module.exports = configInfo;

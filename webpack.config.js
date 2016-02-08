@@ -41,11 +41,15 @@ module.exports = {
     resolve: {
         modulesDirectories: ["node_modules", "app"],
         alias: {
-            "swiper": "swiper/dist/js/swiper.js"
+            "swiper": "swiper/dist/js/swiper.js",
+            "widgets": "widgets"
         }
     },
     plugins: [
         new ExtractTextPlugin("bundle.css"),
+        new Webpack.DefinePlugin({
+            ENV: JSON.stringify(process.env.STATUS) || "'PROD'"
+        }),
         new Webpack.ProvidePlugin({
             Swiper: "swiper"
         })

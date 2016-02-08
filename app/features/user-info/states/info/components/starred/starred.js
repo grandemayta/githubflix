@@ -7,11 +7,11 @@
 
 "use strict";
 
-import React                              from "react";
-import Reflux                             from "reflux";
-import { Link }                           from "react-router";
-import { Spinner }                        from "../../components";
-import { Actions, Store }                 from "./config";
+import React                                 from "react";
+import Reflux                                from "reflux";
+import { Link }                              from "react-router";
+import { Actions, Store }                    from "./config";
+import { Spinner }                           from "widgets";
 
 
 let Starred = React.createClass({
@@ -21,7 +21,7 @@ let Starred = React.createClass({
     componentDidMount() {
         Actions.LOAD_INITIAL_DATA();
     },
-    
+
     componentDidUpdate(){
         if (this.state.starredResponse.length > 0) {
             var swiper = new Swiper("#swiper-starred", {
@@ -45,6 +45,7 @@ let Starred = React.createClass({
         return (
             <div>
                 <h2>Starred</h2>
+                <Spinner status={this.state.spinnerStatus}/>
                 <div id="swiper-starred" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
                         {this.state.starredResponse.map(items)}

@@ -7,28 +7,33 @@
 
 "use strict";
 
-import React            from "react";
+import React                            from "react";
+import Reflux                           from "reflux";
+import { Spinner }                      from "widgets";
+import { Actions, Store }               from "./config";
 
 
-class Repository extends React.Component {
+let Repository = React.createClass({
 
-    constructor(props) {
-        super();
-        this.state = {
-            repositoryResponse: props.params.repositoryResponse
-        };
-    };
+    mixins: [Reflux.connect(Store)],
+
+    componentDidMount(){
+        Actions.LOAD_INITIAL_DATA();
+        console.log(ENV);
+
+    },
 
     render() {
         return (
             <div>
+                <Spinner status={this.state.spinnerStatus}/>
                 <h1>My repo: {this.state.repositoryResponse.name}</h1>
             </div>
 
         );
     }
 
-}
+});
 
 module.exports = Repository;
 

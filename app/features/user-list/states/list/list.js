@@ -11,6 +11,7 @@ import React                                 from "react";
 import { Link }                              from "react-router";
 import Reflux                                from "reflux";
 import { Actions, Store }                    from "./config";
+import { Spinner }                           from "widgets";
 
 
 let List = React.createClass({
@@ -32,7 +33,11 @@ let List = React.createClass({
                 </Link>
             );
         };
-        return <div>{this.state.listResponse.map(items)}</div>;
+        return (
+            <div>
+                <Spinner status={this.state.spinnerStatus}/>
+                {this.state.listResponse.map(items)}
+            </div>);
     }
 
 });

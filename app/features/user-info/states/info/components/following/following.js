@@ -7,11 +7,11 @@
 
 "use strict";
 
-import React                              from "react";
-import Reflux                             from "reflux";
-import { Link }                           from "react-router";
-import { Spinner }                        from "../../components";
-import { Actions, Store }                 from "./config";
+import React                                 from "react";
+import Reflux                                from "reflux";
+import { Link }                              from "react-router";
+import { Actions, Store }                    from "./config";
+import { Spinner }                           from "widgets";
 
 
 let Following = React.createClass({
@@ -45,6 +45,7 @@ let Following = React.createClass({
         return (
             <div>
                 <h2>Following</h2>
+                <Spinner status={this.state.spinnerStatus}/>
                 <div id="swiper-following" className="swiper-container slider-main-container">
                     <div className="swiper-wrapper">
                         {this.state.followingResponse.map(items)}

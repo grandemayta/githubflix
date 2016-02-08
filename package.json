@@ -27,7 +27,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --content-base dist --hot --progress --color --port 2241 --inline"
+    "start": "webpack-dev-server --config webpack.config.js --content-base dist --hot --progress --color --port 2241 --inline",
+    "test": "STATUS=DEV webpack-dev-server --config webpack.config.js --content-base dist --hot --progress --color --port 2241 --inline"
   },
   "repository": {
     "type": "git",

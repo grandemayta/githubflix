@@ -6,7 +6,7 @@
  */
 
 
-let configComponents = {
+module.exports = {
 
     getComponents(location, callback) {
         require.ensure([], function (require) {
@@ -21,5 +21,3 @@ let configComponents = {
     }
 
 };
-
-module.exports = configComponents;
