@@ -7,9 +7,10 @@
 
 "use strict";
 
-import Reflux                   from "reflux";
-import Http                     from "superagent";
-import Actions                  from "./list-actions";
+import Reflux                               from "reflux";
+import Actions                              from "./list-actions";
+import { HttpWrapper }                      from "services";
+import UserListInfo                         from "../../../config";
 
 
 let Store = Reflux.createStore({
@@ -28,12 +29,13 @@ let Store = Reflux.createStore({
     onLoadInitialData() {
         var self = this;
 
-        Http
-            .get("https://api.github.com/users")
-            .end(function (error, success) {
-                if (error) self.trigger({spinnerStatus: false});
-                else self.trigger({spinnerStatus: false, listResponse: success.body});
+        HttpWrapper.resolve(
+            'list', UserListInfo(),
+            function (response) {
+                if (response.type === 'error') self.trigger({spinnerStatus: false});
+                else self.trigger({spinnerStatus: false, listResponse: response.data});
             });
+
     }
 
 });

@@ -42,7 +42,9 @@ module.exports = {
         modulesDirectories: ["node_modules", "app"],
         alias: {
             "swiper": "swiper/dist/js/swiper.js",
-            "widgets": "widgets"
+            "widgets": "widgets",
+            "services": "core/services",
+            "features": "features"
         }
     },
     plugins: [

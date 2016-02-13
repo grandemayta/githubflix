@@ -7,9 +7,10 @@
 
 "use strict";
 
-import Reflux                   from "reflux";
-import Http                     from "superagent";
-import Actions                  from "./repository-actions";
+import Reflux                               from "reflux";
+import Actions                              from "./repository-actions";
+import { HttpWrapper }                      from "services";
+import UserRepositoryInfo                   from "../../../config";
 
 
 let Store = Reflux.createStore({
@@ -28,12 +29,13 @@ let Store = Reflux.createStore({
     onLoadInitialData() {
         var self = this;
 
-        Http
-            .get("https://api.github.com/repos/gabrielmayta/angular-mobiscroll")
-            .end(function (error, success) {
-                if (error) self.trigger({spinnerStatus: false});
-                else self.trigger({spinnerStatus: false, repositoryResponse: success.body});
+        HttpWrapper.resolve(
+            'repository', UserRepositoryInfo('gabrielmayta', 'angular-mobiscroll'),
+            function (response) {
+                if (response.type === 'error') self.trigger({spinnerStatus: false});
+                else self.trigger({spinnerStatus: false, repositoryResponse: response.data});
             });
+
     }
 
 });

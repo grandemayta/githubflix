@@ -19,8 +19,6 @@ let Repository = React.createClass({
 
     componentDidMount(){
         Actions.LOAD_INITIAL_DATA();
-        console.log(ENV);
-
     },
 
     render() {
