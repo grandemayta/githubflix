@@ -8,6 +8,8 @@
 "use strict";
 
 import HttpWrapper                  from "./http-wrapper";
+import HttpMock                     from "./http-mock";
+import HttpResolve                  from "./http-resolve";
 
 
-export { HttpWrapper };
+export { HttpWrapper, HttpMock, HttpResolve };

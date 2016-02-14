@@ -26,9 +26,9 @@ let Store = Reflux.createStore({
         this.listenTo(Actions.LOAD_INITIAL_DATA, this.onLoadInitialData);
     },
 
-    onLoadInitialData() {
+    onLoadInitialData(params) {
         var self = this;
-        HttpWrapper.resolve('following', FeatureConfig("gabrielmayta"), function (response) {
+        HttpWrapper('following', FeatureConfig(params.userId), function (response) {
             if (response.type === 'error') self.trigger({spinnerStatus: false});
             else self.trigger({spinnerStatus: false, followingResponse: response.data});
         });

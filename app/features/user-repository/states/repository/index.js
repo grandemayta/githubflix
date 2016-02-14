@@ -8,7 +8,7 @@
 
 module.exports = {
 
-    path: "user/:id/repository",
+    path: "user/:userId/repository/:productId",
 
     getComponent(location, callback) {
         require.ensure([], function (require) {

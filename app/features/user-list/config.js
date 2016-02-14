@@ -8,7 +8,7 @@
 "use strict";
 
 
-let UserListInfo = function () {
+let FeatureConfig = function () {
 
     return {
         "name": "user-list",
@@ -22,4 +22,4 @@ let UserListInfo = function () {
 
 };
 
-export default UserListInfo;
+export default FeatureConfig;

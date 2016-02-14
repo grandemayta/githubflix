@@ -26,14 +26,12 @@ let Store = Reflux.createStore({
         this.listenTo(Actions.LOAD_INITIAL_DATA, this.onLoadInitialData);
     },
 
-    onLoadInitialData() {
+    onLoadInitialData(params) {
         var self = this;
-        HttpWrapper.resolve(
-            'details', FeatureConfig("gabrielmayta"),
-            function (response) {
-                if (response.type === 'error') self.trigger({spinnerStatus: false});
-                else self.trigger({spinnerStatus: false, detailsResponse: response.data});
-            });
+        HttpWrapper('details', FeatureConfig(params.userId), function (response) {
+            if (response.type === 'error') self.trigger({spinnerStatus: false});
+            else self.trigger({spinnerStatus: false, detailsResponse: response.data});
+        });
     }
 
 });

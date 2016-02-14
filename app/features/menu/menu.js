@@ -11,7 +11,7 @@ import React                     from "react";
 import { Link }                  from "react-router";
 
 
-class Menu extends React.Component {
+let Menu = React.createClass({
 
     render() {
         return (
@@ -27,7 +27,7 @@ class Menu extends React.Component {
         );
     }
 
-}
+});
 
-export default Menu;
+module.exports = Menu;
 

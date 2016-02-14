@@ -8,7 +8,7 @@
 
 module.exports = {
 
-    path: 'user/:id',
+    path: 'user/:userId',
     indexRoute: require("./components"),
 
     getComponent(location, callback) {

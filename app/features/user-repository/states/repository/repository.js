@@ -17,8 +17,8 @@ let Repository = React.createClass({
 
     mixins: [Reflux.connect(Store)],
 
-    componentDidMount(){
-        Actions.LOAD_INITIAL_DATA();
+    componentDidMount() {
+        Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
     render() {

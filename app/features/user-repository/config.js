@@ -8,7 +8,7 @@
 "use strict";
 
 
-let UserRepositoryInfo = function (userId, repoId) {
+let FeatureConfig = function (userId, repoId) {
 
     return {
         "name": "user-repository",
@@ -19,7 +19,7 @@ let UserRepositoryInfo = function (userId, repoId) {
             }
         }
     };
-    
+
 };
 
-export default UserRepositoryInfo;
+export default FeatureConfig;

@@ -10,7 +10,7 @@
 import Reflux                               from "reflux";
 import Actions                              from "./repository-actions";
 import { HttpWrapper }                      from "services";
-import UserRepositoryInfo                   from "../../../config";
+import FeatureConfig                        from "features/user-repository/config";
 
 
 let Store = Reflux.createStore({
@@ -26,16 +26,12 @@ let Store = Reflux.createStore({
         this.listenTo(Actions.LOAD_INITIAL_DATA, this.onLoadInitialData);
     },
 
-    onLoadInitialData() {
+    onLoadInitialData(params) {
         var self = this;
-
-        HttpWrapper.resolve(
-            'repository', UserRepositoryInfo('gabrielmayta', 'angular-mobiscroll'),
-            function (response) {
-                if (response.type === 'error') self.trigger({spinnerStatus: false});
-                else self.trigger({spinnerStatus: false, repositoryResponse: response.data});
-            });
-
+        HttpWrapper('repository', FeatureConfig(params.userId, params.productId), function (response) {
+            if (response.type === 'error') self.trigger({spinnerStatus: false});
+            else self.trigger({spinnerStatus: false, repositoryResponse: response.data});
+        });
     }
 
 });

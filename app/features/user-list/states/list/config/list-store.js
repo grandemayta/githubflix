@@ -10,7 +10,7 @@
 import Reflux                               from "reflux";
 import Actions                              from "./list-actions";
 import { HttpWrapper }                      from "services";
-import UserListInfo                         from "features/user-list/config";
+import FeatureConfig                        from "features/user-list/config";
 
 
 let Store = Reflux.createStore({
@@ -28,13 +28,10 @@ let Store = Reflux.createStore({
 
     onLoadInitialData() {
         var self = this;
-        HttpWrapper.resolve(
-            'list', UserListInfo(),
-            function (response) {
-                if (response.type === 'error') self.trigger({spinnerStatus: false});
-                else self.trigger({spinnerStatus: false, listResponse: response.data});
-            });
-
+        HttpWrapper('list', FeatureConfig(), function (response) {
+            if (response.type === 'error') self.trigger({spinnerStatus: false});
+            else self.trigger({spinnerStatus: false, listResponse: response.data});
+        });
     }
 
 });

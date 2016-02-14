@@ -19,7 +19,7 @@ let Repositories = React.createClass({
     mixins: [Reflux.connect(Store)],
 
     componentDidMount() {
-        Actions.LOAD_INITIAL_DATA();
+        Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
     componentDidUpdate(){
@@ -34,7 +34,7 @@ let Repositories = React.createClass({
     render() {
         let items = function (item) {
             return (
-                <Link to={`user/${item.owner.login}/repository`} key={item.id} className="swiper-slide slider-container">
+                <Link to={`user/${item.owner.login}/repository/${item.name}`} key={item.id} className="swiper-slide slider-container">
                     <div className="text-primary-left">{item.name}</div>
                     <div className="text-bottom-right">{item.language}</div>
                 </Link>

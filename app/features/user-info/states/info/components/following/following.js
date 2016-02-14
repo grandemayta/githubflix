@@ -19,7 +19,7 @@ let Following = React.createClass({
     mixins: [Reflux.connect(Store)],
 
     componentDidMount() {
-        Actions.LOAD_INITIAL_DATA();
+        Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
     componentDidUpdate() {
@@ -36,7 +36,7 @@ let Following = React.createClass({
         let items = function (item) {
             return (
                 <Link to={`/user/${item.login}`} key={item.id} className="swiper-slide slider-container">
-                    <div style={{backgroundImage: 'url(' + item.avatar_url + ')'}} className="image-secondary-center"></div>
+                    <div style={{backgroundImage: `url(${item.avatar_url})`}} className="image-secondary-center"></div>
                     <div className="text-botton-center">{item.login}</div>
                 </Link>
             );

@@ -10,7 +10,7 @@
 import React                         from "react";
 
 
-class Info extends React.Component {
+let Info = React.createClass({
 
     render() {
         return (
@@ -24,7 +24,7 @@ class Info extends React.Component {
         );
     }
 
-}
+});
 
 module.exports = Info;
 
