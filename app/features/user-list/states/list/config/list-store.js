@@ -10,7 +10,7 @@
 import Reflux                               from "reflux";
 import Actions                              from "./list-actions";
 import { HttpWrapper }                      from "services";
-import UserListInfo                         from "../../../config";
+import UserListInfo                         from "features/user-list/config";
 
 
 let Store = Reflux.createStore({
@@ -28,7 +28,6 @@ let Store = Reflux.createStore({
 
     onLoadInitialData() {
         var self = this;
-
         HttpWrapper.resolve(
             'list', UserListInfo(),
             function (response) {

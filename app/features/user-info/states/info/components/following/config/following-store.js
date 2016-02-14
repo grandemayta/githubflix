@@ -7,9 +7,10 @@
 
 "use strict";
 
-import Reflux                   from "reflux";
-import Http                     from "superagent";
-import Actions                  from "./following-actions";
+import Reflux                           from "reflux";
+import Actions                          from "./following-actions";
+import { HttpWrapper }                  from "services";
+import FeatureConfig                    from "features/user-info/config";
 
 
 let Store = Reflux.createStore({
@@ -27,13 +28,10 @@ let Store = Reflux.createStore({
 
     onLoadInitialData() {
         var self = this;
-
-        Http
-            .get("https://api.github.com/users/gabrielmayta/following")
-            .end(function (error, success) {
-                if (error) self.trigger({spinnerStatus: false});
-                else self.trigger({spinnerStatus: false, followingResponse: success.body});
-            });
+        HttpWrapper.resolve('following', FeatureConfig("gabrielmayta"), function (response) {
+            if (response.type === 'error') self.trigger({spinnerStatus: false});
+            else self.trigger({spinnerStatus: false, followingResponse: response.data});
+        });
     }
 
 });
