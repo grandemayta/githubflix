@@ -22,6 +22,10 @@ let Starred = React.createClass({
         Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
+    componentWillReceiveProps() {
+        Actions.LOAD_INITIAL_DATA(this.props.params);
+    },
+
     componentDidUpdate(){
         if (this.state.starredResponse.length > 0) {
             var swiper = new Swiper("#swiper-starred", {

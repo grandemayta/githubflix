@@ -22,6 +22,10 @@ let Repositories = React.createClass({
         Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
+    componentWillReceiveProps() {
+        Actions.LOAD_INITIAL_DATA(this.props.params);
+    },
+
     componentDidUpdate(){
         if (this.state.repositoriesResponse.length > 1) {
             var swiper = new Swiper('#swiper-repositories', {

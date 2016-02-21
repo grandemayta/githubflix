@@ -20,6 +20,10 @@ let Details = React.createClass({
         Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
+    componentWillReceiveProps() {
+        Actions.LOAD_INITIAL_DATA(this.props.params);
+    },
+
     render() {
         return (
             <div>

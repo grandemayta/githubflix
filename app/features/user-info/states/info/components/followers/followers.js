@@ -22,7 +22,12 @@ let Followers = React.createClass({
         Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
+    componentWillReceiveProps() {
+        Actions.LOAD_INITIAL_DATA(this.props.params);
+    },
+
     componentDidUpdate() {
+
         if (this.state.followersResponse.length > 1) {
             var swiper = new Swiper("#swiper-followers", {
                 slidesPerView: "auto",
@@ -31,22 +36,14 @@ let Followers = React.createClass({
         }
     },
 
-    handleNavigation(userId) {
-        console.log(userId);
-        console.log(this.props.history);
-        this.props.history.push(`/user/${userId}`)
-
-
-    },
-
     render() {
         var self = this;
         let items = function (item) {
             return (
-                <div onClick={self.handleNavigation.bind(self, item.login)} key={item.id} className="swiper-slide slider-container">
+                <Link to={`/user/${item.login}`} key={item.id} className="swiper-slide slider-container">
                     <div style={{backgroundImage: `url(${item.avatar_url})`}} className="image-secondary-center"></div>
                     <div className="text-botton-center">{item.login}</div>
-                </div>
+                </Link>
             );
         };
 

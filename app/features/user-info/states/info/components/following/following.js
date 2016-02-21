@@ -22,6 +22,10 @@ let Following = React.createClass({
         Actions.LOAD_INITIAL_DATA(this.props.params);
     },
 
+    componentWillReceiveProps() {
+        Actions.LOAD_INITIAL_DATA(this.props.params);
+    },
+    
     componentDidUpdate() {
         if (this.state.followingResponse.length > 0) {
             var swiper = new Swiper("#swiper-following", {

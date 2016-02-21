@@ -7,11 +7,11 @@
 
 "use strict";
 
-import React                                    from "react";
-import { render }                               from "react-dom";
-import { Router, Route, browserHistory }        from "react-router";
-import Menu                                     from "features/menu/menu";
-import Css                                      from "../css/common.scss";
+import React                                        from "react";
+import { render }                                   from "react-dom";
+import { Router, Route, hashHistory }               from "react-router";
+import Menu                                         from "features/menu/menu";
+import Css                                          from "../css/common.scss";
 
 
 let Routes = [
@@ -27,6 +27,6 @@ let Routes = [
 ];
 
 render(
-    <Router history={browserHistory} routes={Routes}/>,
+    <Router history={hashHistory} routes={Routes}/>,
     document.getElementById("start")
 );
