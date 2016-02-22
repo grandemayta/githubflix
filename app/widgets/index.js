@@ -9,6 +9,7 @@
 
 
 import Spinner              from "./spinner";
+import Overlay              from "./overlay";
 
 
-export { Spinner };
+export { Spinner, Overlay };

@@ -12,6 +12,7 @@
  *
  * Released on: January 10, 2016
  */
+
 .swiper-container {
   margin: 0 auto;
   position: relative;
@@ -616,4 +617,18 @@ button.swiper-pagination-bullet {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* ADD BY GABRIEL MAYTA */
+.slider-main-container {
+  padding-left: 20px;
+}
+
+.slider-container {
+  display: block;
+  width: 138px;
+  height: 78px;
+  text-align: center;
+  background: $background-transparent;
+  overflow: hidden;
 }

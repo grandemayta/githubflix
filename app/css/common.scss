@@ -4,8 +4,11 @@
  * @email : grandemayta@gmail.com
  *
  */
+@import "config";
 @import "githubflix";
 @import "swiper";
+@import "header";
+@import "spinner";
 
 * {
   margin: 0;
@@ -21,14 +24,6 @@
   border-radius: 0;
   cursor: default;
 }
-
-$background-primary: #141414;
-$background-secondary: #000;
-$text-primary: #999;
-$text-secondary: #fff;
-$text-logo: #e50914;
-$button-primary: #e50914;
-$background-transparent: rgba(0, 0, 0, 0.6);
 
 body {
   background: $background-primary;
@@ -57,39 +52,56 @@ h1, h2 {
   width: 100%;
 }
 
-/************************ HEADER ************************/
-header {
+aside {
   position: absolute;
-  display: table;
-  z-index: 100;
+  z-index: 15;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background: #000;
+  -webkit-transform: translateX(-220px);
+  -moz-transform: translateX(-220px);
+  -ms-transform: translateX(-220px);
+  transform: translateX(-220px);
+  -webkit-transition: transform .3s;
+  -moz-transition: transform .3s;
+  transition: transform .3s;
+  overflow: hidden;
+}
+
+section {
+  position: absolute;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background: $background-transparent;
+  bottom: 0;
+  transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transition: transform .3s;
+  -webkit-transition: transform .3s;
+  -moz-transition: transform .3s;
+  overflow: hidden;
 }
 
-header i {
-  display: table;
-  margin: 12px 0 0 14px;
-  font-size: 34px;
-  vertical-align: middle;
-  color: $text-secondary;
+aside.active {
+  transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  -ms-transform: translateX(0px);
 }
 
-header a {
-  display: table-cell;
-  width: 100%;
-  vertical-align: middle;
-  padding-left: 14px;
-  color: $text-logo;
-  font-size: 18px;
-  text-transform: uppercase;
-  font-weight: bold;
+section.active {
+  transform: translateX(220px);
+  -webkit-transform: translateX(220px);
+  -moz-transform: translateX(220px);
+  -ms-transform: translateX(220px);
 }
 
-/************************ SECTION ************************/
-section {
+article {
   position: absolute;
   z-index: 10;
   width: 100%;
@@ -98,6 +110,23 @@ section {
   padding-bottom: 10px;
   overflow: auto;
 }
+
+.overlay {
+  position: absolute;
+  z-index: 80;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.0);
+  transition: transform 0.3s;
+}
+
+.overlay.active {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/************************ CARD ************************/
 
 .card-container {
   display: table;
@@ -135,21 +164,6 @@ section {
   vertical-align: middle;
   font-size: 18px;
   color: $text-secondary;
-}
-
-/*************** SLIDER CONTAINER **************/
-
-.slider-main-container {
-  padding-left: 20px;
-}
-
-.slider-container {
-  display: block;
-  width: 138px;
-  height: 78px;
-  text-align: center;
-  background: $background-transparent;
-  overflow: hidden;
 }
 
 .text-primary-left {
@@ -202,54 +216,10 @@ section {
   border-radius: 50%;
 }
 
-/*************** SPINNER **************/
-
 .display-none {
   display: none;
 }
 
-.spinner {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  margin: 20px auto;
-}
-
-.double-bounce1, .double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #333;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
-}
-
-.double-bounce2 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
-}
-
-@-webkit-keyframes sk-bounce {
-  0%, 100% {
-    -webkit-transform: scale(0.0)
-  }
-  50% {
-    -webkit-transform: scale(1.0)
-  }
-}
-
-@keyframes sk-bounce {
-  0%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  }
-  50% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+.display-block {
+  display: block;
 }

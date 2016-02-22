@@ -1,0 +1,36 @@
+/**
+ *
+ * @author: Gabriel Mayta
+ * @email : grandemayta@gmail.com
+ *
+ */
+
+header {
+  position: absolute;
+  display: table;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: $background-transparent;
+}
+
+header i {
+  display: table;
+  margin: 12px 0 0 14px;
+  font-size: 34px;
+  vertical-align: middle;
+  color: $text-secondary;
+}
+
+header a {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+  padding-left: 14px;
+  color: $text-logo;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}

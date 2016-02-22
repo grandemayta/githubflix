@@ -50,7 +50,7 @@ let Following = React.createClass({
             <div>
                 <h2>Following</h2>
                 <Spinner status={this.state.spinnerStatus}/>
-                <div id="swiper-following" className="swiper-container slider-main-container">
+                <div id="swiper-following" className="swiper-container slider-main-container" data-snap-ignore="true">
                     <div className="swiper-wrapper">
                         {this.state.followingResponse.map(items)}
                     </div>

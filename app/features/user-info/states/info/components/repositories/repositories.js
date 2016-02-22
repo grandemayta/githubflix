@@ -48,7 +48,7 @@ let Repositories = React.createClass({
             <div>
                 <h2>Repositories</h2>
                 <Spinner status={this.state.spinnerStatus}/>
-                <div id="swiper-repositories" className="swiper-container slider-main-container">
+                <div id="swiper-repositories" className="swiper-container slider-main-container" data-snap-ignore="true">
                     <div className="swiper-wrapper">
                         {this.state.repositoriesResponse.map(items)}
                     </div>
