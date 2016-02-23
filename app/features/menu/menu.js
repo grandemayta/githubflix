@@ -13,6 +13,10 @@ import { Overlay }                    from "widgets";
 
 let Menu = React.createClass({
 
+    contextTypes: {
+        router: React.PropTypes.object.isRequired
+    },
+
     getInitialState() {
         return {
             menuStatus: false
@@ -21,6 +25,10 @@ let Menu = React.createClass({
 
     handleMenu() {
         this.setState({menuStatus: !this.state.menuStatus});
+    },
+
+    handleNavigation() {
+        this.context.router.push('search');
     },
 
     render() {
@@ -36,6 +44,7 @@ let Menu = React.createClass({
                     <header>
                         <i onClick={this.handleMenu} className="icon-android-menu"></i>
                         <Link to="/" className="no-a-style">Githubflix</Link>
+                        <b onClick={this.handleNavigation} className="icon-search"></b>
                     </header>
                     <article>
                         {this.props.children}

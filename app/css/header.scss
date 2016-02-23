@@ -14,12 +14,22 @@ header {
   right: 0;
   height: 60px;
   background: $background-transparent;
+  overflow: hidden;
 }
 
 header i {
   display: table;
-  margin: 12px 0 0 14px;
   font-size: 34px;
+  margin-top: 12px;
+  padding: 0 5px 0 14px;
+  color: $text-secondary;
+}
+
+header b {
+  display: table-cell;
+  padding-top: 4px;
+  padding-right: 14px;
+  font-size: 22px;
   vertical-align: middle;
   color: $text-secondary;
 }

@@ -21,7 +21,8 @@ let Routes = [
         indexRoute: require("features/user-list/states/list"),
         childRoutes: [
             require("features/user-info/states/info"),
-            require("features/user-repository/states/repository")
+            require("features/user-repository/states/repository"),
+            require("features/user-search/states/search")
         ]
     }
 ];
