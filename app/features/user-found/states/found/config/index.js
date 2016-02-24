@@ -7,8 +7,8 @@
 
 "use strict";
 
-import Actions                  from "./search-actions";
-import Store                    from "./search-store";
+import Actions                  from "./found-actions";
+import Store                    from "./found-store";
 
 
 export { Actions, Store };

@@ -8,16 +8,10 @@
 "use strict";
 
 
-let FeatureConfig = function (name) {
+let FeatureConfig = function () {
 
     return {
-        "name": "user-search",
-        "states": {
-            "search": {
-                "url": `search/users?q=${name}`,
-                "method": "GET"
-            }
-        }
+        "name": "user-search"
     };
 
 };

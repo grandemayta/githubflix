@@ -8,9 +8,9 @@
 "use strict";
 
 import Reflux                               from "reflux";
-import Actions                              from "./repository-actions";
+import Actions                              from "./found-actions";
 import { HttpWrapper }                      from "services";
-import FeatureConfig                        from "features/user-search/config";
+import FeatureConfig                        from "features/user-found/config";
 
 
 let Store = Reflux.createStore({
@@ -18,28 +18,20 @@ let Store = Reflux.createStore({
     getInitialState() {
         return {
             spinnerStatus: true,
-            searchResponse: []
+            foundResponse: []
         }
     },
 
     init() {
         this.listenTo(Actions.LOAD_INITIAL_DATA, this.onLoadInitialData);
-        this.listenTo(Actions.SEARCH_USERS, this.onSearchUsers);
     },
 
-    onLoadInitialData() {
-        this.trigger({spinnerStatus: false});
-    },
-
-    onSearchUsers(params) {
+    onLoadInitialData(name) {
         var self = this;
         self.trigger({spinnerStatus: true});
-        HttpWrapper('search', FeatureConfig(params.name), function (response) {
+        HttpWrapper('found', FeatureConfig(name), function (response) {
             if (response.type === 'error') self.trigger({spinnerStatus: false});
-            else {
-                console.log(response.data);
-                self.trigger({spinnerStatus: false, searchResponse: response.data});
-            }
+            else self.trigger({spinnerStatus: false, foundResponse: response.data.items});
         });
     }
 

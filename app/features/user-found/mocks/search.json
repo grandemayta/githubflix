@@ -1,0 +1,26 @@
+{
+  "total_count": 1,
+  "incomplete_results": false,
+  "items": [
+    {
+      "login": "gabrielmayta",
+      "id": 6887120,
+      "avatar_url": "https://avatars.githubusercontent.com/u/6887120?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/gabrielmayta",
+      "html_url": "https://github.com/gabrielmayta",
+      "followers_url": "https://api.github.com/users/gabrielmayta/followers",
+      "following_url": "https://api.github.com/users/gabrielmayta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/gabrielmayta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/gabrielmayta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/gabrielmayta/subscriptions",
+      "organizations_url": "https://api.github.com/users/gabrielmayta/orgs",
+      "repos_url": "https://api.github.com/users/gabrielmayta/repos",
+      "events_url": "https://api.github.com/users/gabrielmayta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/gabrielmayta/received_events",
+      "type": "User",
+      "site_admin": false,
+      "score": 24.265388
+    }
+  ]
+}
